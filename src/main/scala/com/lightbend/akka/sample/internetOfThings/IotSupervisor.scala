@@ -1,6 +1,6 @@
-package com.lightbend.akka.sample
+package com.lightbend.akka.sample.internetOfThings
 
-import akka.actor.{ Actor, ActorLogging, Props }
+import akka.actor.{Actor, ActorLogging, Props}
 
 object IotSupervisor {
   val Name = "iot-supervisor"

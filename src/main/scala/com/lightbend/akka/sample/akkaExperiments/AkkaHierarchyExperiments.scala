@@ -1,6 +1,7 @@
-package com.lightbend.akka.sample
+package com.lightbend.akka.sample.akkaExperiments
 
-import akka.actor.{ Actor, Props, ActorSystem }
+import akka.actor.{Actor, ActorSystem, Props}
+
 import scala.io.StdIn
 
 class PrintMyActorRefActor extends Actor {

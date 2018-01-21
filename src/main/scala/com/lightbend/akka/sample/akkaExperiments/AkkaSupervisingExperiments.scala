@@ -1,4 +1,4 @@
-package com.lightbend.akka.sample
+package com.lightbend.akka.sample.akkaExperiments
 
 import akka.actor.{Actor, ActorSystem, Props}
 

@@ -1,6 +1,7 @@
-package com.lightbend.akka.sample
+package com.lightbend.akka.sample.internetOfThings
 
 import akka.actor.ActorSystem
+
 import scala.io.StdIn
 
 object IotApp {
