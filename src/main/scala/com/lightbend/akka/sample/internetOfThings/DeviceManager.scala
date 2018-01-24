@@ -4,6 +4,8 @@ import akka.actor.{Actor, ActorLogging, ActorRef, Props, Terminated}
 import com.lightbend.akka.sample.internetOfThings.DeviceManager.RequestTrackDevice
 
 object DeviceManager {
+  val Name = "device-manager"
+
   def props(): Props = Props(new DeviceManager)
 
   final case class RequestTrackDevice(groupId: String, deviceId: String)
@@ -22,9 +24,9 @@ class DeviceManager extends Actor with ActorLogging {
   override def receive = {
     case trackMsg @ RequestTrackDevice(groupId, _) =>
       groupIdToActor.get(groupId) match {
-        case Some(ref) ⇒
+        case Some(ref) =>
           ref forward trackMsg
-        case None ⇒
+        case None =>
           log.info("Creating device group actor for {}", groupId)
           val groupActor = context.actorOf(DeviceGroup.props(groupId), "group-" + groupId)
           context.watch(groupActor)

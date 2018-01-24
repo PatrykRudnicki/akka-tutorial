@@ -3,6 +3,8 @@ package com.lightbend.akka.sample.internetOfThings
 import akka.actor.{Actor, ActorLogging, Props}
 
 object Device {
+  val Name = "device"
+
   def props(groupId: String, deviceId: String): Props = Props(new Device(groupId, deviceId))
 
   final case class RecordTemperature(requestId: Long, value: Double)
@@ -18,6 +20,7 @@ class Device(groupId: String, deviceId: String) extends Actor with ActorLogging 
   var lastTemperatureReading: Option[Double] = None
 
   override def preStart(): Unit = log.info("Device actor {}-{} started", groupId, deviceId)
+
   override def postStop(): Unit = log.info("Device actor {}-{} stopped", groupId, deviceId)
 
   override def receive: Receive = {
@@ -38,5 +41,4 @@ class Device(groupId: String, deviceId: String) extends Actor with ActorLogging 
     case ReadTemperature(id) =>
       sender() ! RespondTemperature(id, lastTemperatureReading)
   }
-
 }
